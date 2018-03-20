@@ -24,11 +24,9 @@ Scheme is
 
 ## Simple by design
 
-History:
-
-* Designed for teaching
+* Designed for teaching^[by Sussman and Steele, 1970s]
+* Used as the basis of the Computer Science course at MIT
 * Based on Lambda Calculus^[Alonzo Church, 1930]
-* MIT cs curriculum, SICP
 
 ## Simple to try
 
@@ -109,38 +107,38 @@ Both are actually the same.
 ```scheme
 > (define foo 3)
 ```
-. . .
-```scheme
-> foo
-```
-. . .
-```scheme
-3
-```
-. . .
-```scheme
-> (* foo 4)
-```
-. . .
-```scheme
-12
-```
 
-## Simple functions
+## Simple definitions
 
 ```scheme
+> (define foo 3)
 > foo
 ```
-. . .
+
+## Simple definitions
+
 ```scheme
+> (define foo 3)
+> foo
 3
 ```
-. . .
+
+## Simple definitions
+
 ```scheme
+> (define foo 3)
+> foo
+3
 > (* foo 4)
 ```
-. . .
+
+## Simple definitions
+
 ```scheme
+> (define foo 3)
+> foo
+3
+> (* foo 4)
 12
 ```
 
@@ -159,6 +157,13 @@ Both are actually the same.
 - macros
 - Build your own language
 - Metasyntactic evaluator
+* `?`, `-` and `!` in names
+
+## Cool reading
+
+* *Structure and Interpretation of Computer
+  Programs*^[<https://mitpress.mit.edu/sicp/full-text/book/book.html>] changed
+  my life
 
 ## Questions
 
