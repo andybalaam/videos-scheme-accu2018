@@ -1,22 +1,19 @@
 ---
 title: Scheme Lisp - Feel the Cool
-author: Andy Balaam
-header-includes: \usepackage[scale=2]{ccicons}
+author: Andy Balaam, OpenMarket
+header-includes:
+  - \usepackage[scale=2]{ccicons}
+  - \usepackage{listings}
+  - \lstset{basicstyle=\ttfamily}
+  - \newcommand{\CodeEmphasis}[1]{\textcolor{red}{\textit{#1}}}
 fontsize: 14pt
 ---
 
+## Intro {.fragile}
 
-foo
-
-<pre>
-> (<span style="color:red;">define</span> foo 3)
-</pre>
-
-<span style="color:red;">define</span>
-
+```{emphasize=1:3-3:5}
 define
-
-## Intro
+```
 
 Scheme is
 
@@ -24,7 +21,7 @@ Scheme is
 * weird, and
 * cool
 
-## Simple by design
+## Simple by design {.fragile}
 
 History:
 
@@ -32,7 +29,7 @@ History:
 * Based on Lambda Calculus
 * MIT cs curriculum, SICP
 
-## Simple to try
+## Simple to try {.fragile}
 
 ```bash
 $ sudo apt install racket
@@ -40,7 +37,7 @@ $ mzscheme
 >
 ```
 
-## Simple to use
+## Simple to use {.fragile}
 
 Scheme has:
 
@@ -49,39 +46,64 @@ Scheme has:
 
 Both are actually the same.
 
-## Simple syntax
+## Simple syntax {.fragile}
 
 ```scheme
 (operator operand1 operand2 ...)
 ```
 
-## Simple expressions
+## Simple expressions {.fragile}
 
 ```scheme
 > (+ 3 4)
 ```
-. . .
+
+## Simple expressions {.fragile}
+
 ```scheme
+> (+ 3 4)
 7
 ```
-. . .
+
+## Simple expressions {.fragile}
+
 ```scheme
+> (+ 3 4)
+7
 > (* 3 4)
 ```
-. . .
+
+## Simple expressions {.fragile}
+
 ```scheme
+> (+ 3 4)
+7
+> (* 3 4)
 12
 ```
-. . .
+
+## Simple expressions {.fragile}
+
 ```scheme
+> (+ 3 4)
+7
+> (* 3 4)
+12
 > (+ 5 (* 2 2))
 ```
-. . .
+
+## Simple expressions {.fragile}
+
 ```scheme
+> (+ 3 4)
+7
+> (* 3 4)
+12
+> (+ 5 (* 2 2))
 9
 ```
 
-## Simple definitions
+## Simple definitions {.fragile}
 
 ```scheme
 > (define foo 3)
@@ -103,7 +125,7 @@ Both are actually the same.
 12
 ```
 
-## Simple functions
+## Simple functions {.fragile}
 
 
 . . .
@@ -123,14 +145,14 @@ Both are actually the same.
 12
 ```
 
-## Weird
+## Weird {.fragile}
 
 - Pass functions as arguments
 - Recursion
 - Data/code duality
 - set! etc.
 
-## Cool
+## Cool {.fragile}
 
 - duck typing (generics)
 - generating code
