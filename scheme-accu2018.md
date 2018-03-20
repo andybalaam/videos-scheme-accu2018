@@ -1,8 +1,9 @@
 ---
 title: Scheme Lisp - Feel the Cool
-author: Andy Balaam, OpenMarket
+author: Andy Balaam, OpenMarket \newline \ccbysa
+rights: Copyright 2018 Andy Balaam, CC BY-SA
 header-includes:
-  - \usepackage[scale=2]{ccicons}
+  - \usepackage[scale=1]{ccicons}
   - \usepackage{listings}
   - \lstset{basicstyle=\ttfamily}
   - \newcommand{\CodeEmphasis}[1]{\textcolor{red}{\textit{#1}}}
@@ -21,15 +22,15 @@ Scheme is
 * weird, and
 * cool
 
-## Simple by design {.fragile}
+## Simple by design
 
 History:
 
 * Designed for teaching
-* Based on Lambda Calculus
+* Based on Lambda Calculus^[Alonzo Church, 1930]
 * MIT cs curriculum, SICP
 
-## Simple to try {.fragile}
+## Simple to try
 
 ```bash
 $ sudo apt install racket
@@ -37,7 +38,7 @@ $ mzscheme
 >
 ```
 
-## Simple to use {.fragile}
+## Simple to use
 
 Scheme has:
 
@@ -46,26 +47,26 @@ Scheme has:
 
 Both are actually the same.
 
-## Simple syntax {.fragile}
+## Simple syntax
 
 ```scheme
 (operator operand1 operand2 ...)
 ```
 
-## Simple expressions {.fragile}
+## Simple expressions
 
 ```scheme
 > (+ 3 4)
 ```
 
-## Simple expressions {.fragile}
+## Simple expressions
 
 ```scheme
 > (+ 3 4)
 7
 ```
 
-## Simple expressions {.fragile}
+## Simple expressions
 
 ```scheme
 > (+ 3 4)
@@ -73,7 +74,7 @@ Both are actually the same.
 > (* 3 4)
 ```
 
-## Simple expressions {.fragile}
+## Simple expressions
 
 ```scheme
 > (+ 3 4)
@@ -82,7 +83,7 @@ Both are actually the same.
 12
 ```
 
-## Simple expressions {.fragile}
+## Simple expressions
 
 ```scheme
 > (+ 3 4)
@@ -92,7 +93,7 @@ Both are actually the same.
 > (+ 5 (* 2 2))
 ```
 
-## Simple expressions {.fragile}
+## Simple expressions
 
 ```scheme
 > (+ 3 4)
@@ -103,7 +104,7 @@ Both are actually the same.
 9
 ```
 
-## Simple definitions {.fragile}
+## Simple definitions
 
 ```scheme
 > (define foo 3)
@@ -125,10 +126,8 @@ Both are actually the same.
 12
 ```
 
-## Simple functions {.fragile}
+## Simple functions
 
-
-. . .
 ```scheme
 > foo
 ```
@@ -145,14 +144,14 @@ Both are actually the same.
 12
 ```
 
-## Weird {.fragile}
+## Weird
 
 - Pass functions as arguments
 - Recursion
 - Data/code duality
 - set! etc.
 
-## Cool {.fragile}
+## Cool
 
 - duck typing (generics)
 - generating code
@@ -163,6 +162,6 @@ Both are actually the same.
 
 ## Questions
 
-[Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)
+This presentation is available under [cc by-sa](http://creativecommons.org/licenses/by-sa/4.0/) at [github.com/andybalaam/videos-scheme-accu2018](https://github.com/andybalaam/videos-scheme-accu2018).
 
-\ccbysa
+\center \ccbysa
