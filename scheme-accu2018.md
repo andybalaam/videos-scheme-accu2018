@@ -112,6 +112,7 @@ Both are actually the same.
 
 ```scheme
 > (define foo 3)
+
 > foo
 ```
 
@@ -119,6 +120,7 @@ Both are actually the same.
 
 ```scheme
 > (define foo 3)
+
 > foo
 3
 ```
@@ -127,6 +129,7 @@ Both are actually the same.
 
 ```scheme
 > (define foo 3)
+
 > foo
 3
 > (* foo 4)
@@ -136,10 +139,120 @@ Both are actually the same.
 
 ```scheme
 > (define foo 3)
+
 > foo
 3
 > (* foo 4)
 12
+```
+
+## Simple functions
+
+```scheme
+> (define (square x) (* x x))
+```
+
+## Simple functions
+
+```scheme
+> (define (square x) (* x x))
+
+> (square 4)
+```
+
+## Simple functions
+
+```scheme
+> (define (square x) (* x x))
+
+> (square 4)
+16
+```
+
+## Simple functions
+
+```scheme
+> (define (square x) (* x x))
+
+> (square 4)
+16
+> (+ (square 2) (square 3))
+
+```
+## Simple functions
+
+```scheme
+> (define (square x) (* x x))
+
+> (square 4)
+16
+> (+ (square 2) (square 3))
+13
+```
+
+## Simple flow control
+
+```scheme
+(define (abs x)
+        (if (< x 0)
+            (- x)
+            x))
+
+> (abs -3)
+3
+> (abs 3)
+3
+```
+
+## Simple data structure
+
+```scheme
+> (list 9 3 5)
+```
+
+## Simple data structure
+
+```scheme
+> (list 9 3 5)
+(9 3 5)
+```
+
+## Simple data structure
+
+```scheme
+> (list 9 3 5)
+(9 3 5)
+> (sort (list 9 3 5))
+```
+
+## Simple data structure
+
+```scheme
+> (list 9 3 5)
+(9 3 5)
+> (sort (list 9 3 5))
+(3 5 9)
+```
+
+## Simple data structure
+
+```scheme
+> (list 9 3 5)
+(9 3 5)
+> (sort (list 9 3 5))
+(3 5 9)
+> (length (list 3 2))
+```
+
+## Simple data structure
+
+```scheme
+> (list 9 3 5)
+(9 3 5)
+> (sort (list 9 3 5))
+(3 5 9)
+> (length (list 3 2))
+2
 ```
 
 ## Weird
