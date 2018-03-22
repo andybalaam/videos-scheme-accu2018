@@ -257,10 +257,50 @@ Both are actually the same.
 
 ## Weird
 
-- Pass functions as arguments
-- Recursion
-- Data/code duality
-- set! etc.
+* Building lists from pairs
+* Recursion for everything
+* Passing functions into functions
+* Data/code duality
+* Cheating with `set!`
+
+## Weird lists
+
+```scheme
+> (define x (list 1 2 3))
+
+> (car x)
+1
+> (cdr x)
+(2 3)
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons "a1" "a2") "b")
+(("a1" . "a2") . "b")
+> (define p (cons 1 2))
+
+> (car p)
+1
+> (cdr p)
+2
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+> (cons 2 null)
+(2)
+> (cons 1 (cons 2 null))
+(1 2)
+> (list 1 2)
+(1 2)
+```
 
 ## Cool
 
