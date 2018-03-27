@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import json
+import mimetypes
+import sys
+
+
+def process_image(img):
+    filename = img[2][0]
+    typ, _ = mimetypes.guess_type(filename)
+    if typ == 'image/svg+xml':
+        img[2][0] = filename + ".pdf"
+    return img
+
+
+def process_list_item(item):
+    if type(item) != dict:
+        return item
+    if "c" not in item:
+        return item
+
+    assert set(item.keys()) == set(["c", "t"])
+    c = item["c"]
+    t = item["t"]
+
+    if t == "Image":
+        return {"t": t, "c": process_image(c)}
+    elif type(c) == list:
+        return {"t": t, "c": process_list(c)}
+    else:
+        return item
+
+
+def process_list(lst):
+    return [process_list_item(item) for item in lst]
+
+
+def process(ast):
+    ast["blocks"] = process_list(ast["blocks"])
+    return ast
+
+
+if __name__ == "__main__":
+    if sys.argv[1] == "beamer":
+        json.dump(process(json.load(sys.stdin)), sys.stdout)
+    else:
+        for ln in sys.stdin:
+            sys.stdout.write(ln)

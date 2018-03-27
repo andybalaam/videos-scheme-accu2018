@@ -10,11 +10,7 @@ header-includes:
 fontsize: 14pt
 ---
 
-## Intro {.fragile}
-
-```{emphasize=1:3-3:5}
-define
-```
+## Intro
 
 Scheme is
 
@@ -197,6 +193,51 @@ Both are actually the same.
         (if (< x 0)
             (- x)
             x))
+```
+
+## Simple flow control
+
+```scheme
+(define (abs x)
+        (if (< x 0)
+            (- x)
+            x))
+
+> (abs -3)
+```
+
+## Simple flow control
+
+```scheme
+(define (abs x)
+        (if (< x 0)
+            (- x)
+            x))
+
+> (abs -3)
+3
+```
+
+## Simple flow control
+
+```scheme
+(define (abs x)
+        (if (< x 0)
+            (- x)
+            x))
+
+> (abs -3)
+3
+> (abs 3)
+```
+
+## Simple flow control
+
+```scheme
+(define (abs x)
+        (if (< x 0)
+            (- x)
+            x))
 
 > (abs -3)
 3
@@ -267,6 +308,39 @@ Both are actually the same.
 
 ```scheme
 > (define x (list 1 2 3))
+```
+
+## Weird lists
+
+```scheme
+> (define x (list 1 2 3))
+
+> (car x)
+```
+
+## Weird lists
+
+```scheme
+> (define x (list 1 2 3))
+
+> (car x)
+1
+```
+
+## Weird lists
+
+```scheme
+> (define x (list 1 2 3))
+
+> (car x)
+1
+> (cdr x)
+```
+
+## Weird lists
+
+```scheme
+> (define x (list 1 2 3))
 
 > (car x)
 1
@@ -278,15 +352,157 @@ Both are actually the same.
 
 ```scheme
 > (cons "a" "b")
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
 ("a" . "b")
-> (cons (cons "a1" "a2") "b")
-(("a1" . "a2") . "b")
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+((5 . 6) . 7)
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+((5 . 6) . 7)
+> (define p (cons 1 2))
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+((5 . 6) . 7)
+> (define p (cons 1 2))
+
+> (car p)
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+((5 . 6) . 7)
+> (define p (cons 1 2))
+
+> (car p)
+1
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+((5 . 6) . 7)
+> (define p (cons 1 2))
+
+> (car p)
+1
+> (cdr p)
+```
+
+## Weird pairs
+
+```scheme
+> (cons "a" "b")
+("a" . "b")
+> (cons (cons 5 6) 7)
+((5 . 6) . 7)
 > (define p (cons 1 2))
 
 > (car p)
 1
 > (cdr p)
 2
+```
+
+## Weird list-building
+
+```scheme
+> null
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+> (cons 2 null)
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+> (cons 2 null)
+(2)
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+> (cons 2 null)
+(2)
+> (cons 1 (cons 2 null))
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+> (cons 2 null)
+(2)
+> (cons 1 (cons 2 null))
+(1 2)
+```
+
+## Weird list-building
+
+```scheme
+> null
+()
+> (cons 2 null)
+(2)
+> (cons 1 (cons 2 null))
+(1 2)
+> (list 1 2)
 ```
 
 ## Weird list-building
@@ -300,6 +516,91 @@ Both are actually the same.
 (1 2)
 > (list 1 2)
 (1 2)
+```
+
+## Weird lists made of pairs
+
+![](list-of-pairs.svg)\ 
+
+```scheme
+(list 1 2 3)
+```
+
+## Weirdly named functions
+
+* `cons` sticks things together
+* `car` gives you the first thing
+* `cdr` gives you the second thing
+
+## Weirdly named functions
+
+* `cons` sticks things together
+* `car` gives you the "head"
+* `cdr` gives you the "tail"
+
+## Weirdly named functions
+
+* So `cdadar`'s meaning should be obvious
+
+## Weirdly named functions
+
+* So `cdadar`'s meaning should be obvious
+* Right?
+
+## Weirdly named functions {.fragile}
+
+From the manual:
+
+```{emphasize=1:3-1:6,2:11-2:11,2:16-2:16,2:21-2:21,2:26-2:26}
+(cdaddr v)
+Returns (cdr (car (cdr (cdr v))))
+```
+
+## Weird recursion
+
+```scheme
+(define (sum vs)
+        (if (= 1 (length vs))
+            (car vs)
+            (+ (car vs)
+               (sum (cdr vs)))))
+```
+
+## Weird recursion
+
+```scheme
+(define (sum vs)
+        (if (= 1 (length vs))
+            (car vs)
+            (+ (car vs)
+               (sum (cdr vs)))))
+
+> (sum (list 5 6 7))
+```
+
+
+## Weird recursion
+
+```scheme
+(define (sum vs)
+        (if (= 1 (length vs))
+            (car vs)
+            (+ (car vs)
+               (sum (cdr vs)))))
+
+> (sum (list 5 6 7))
+18
+```
+
+
+## Weird recursion {.fragile}
+
+```{emphasize=1:10-1:12,5:17-5:19}
+(define (sum vs)
+        (if (= 1 (length vs))
+            (car vs)
+            (+ (car vs)
+               (sum (cdr vs)))))
 ```
 
 ## Cool
