@@ -263,7 +263,7 @@ Both are actually the same.
 ```scheme
 > (list 9 3 5)
 (9 3 5)
-> (sort (list 9 3 5))
+> (sort (list 9 3 5) <)
 ```
 
 ## Simple data structure
@@ -271,7 +271,7 @@ Both are actually the same.
 ```scheme
 > (list 9 3 5)
 (9 3 5)
-> (sort (list 9 3 5))
+> (sort (list 9 3 5) <)
 (3 5 9)
 ```
 
@@ -280,7 +280,7 @@ Both are actually the same.
 ```scheme
 > (list 9 3 5)
 (9 3 5)
-> (sort (list 9 3 5))
+> (sort (list 9 3 5) <)
 (3 5 9)
 > (length (list 3 2))
 ```
@@ -290,7 +290,7 @@ Both are actually the same.
 ```scheme
 > (list 9 3 5)
 (9 3 5)
-> (sort (list 9 3 5))
+> (sort (list 9 3 5) <)
 (3 5 9)
 > (length (list 3 2))
 2
@@ -302,7 +302,6 @@ Both are actually the same.
 * Recursion for everything
 * Passing functions into functions
 * Data/code duality
-* Cheating with `set!`
 
 ## Weird lists
 
@@ -592,7 +591,6 @@ Returns (cdr (car (cdr (cdr v))))
 18
 ```
 
-
 ## Weird recursion {.fragile}
 
 ```{emphasize=1:10-1:12,5:17-5:19}
@@ -603,15 +601,194 @@ Returns (cdr (car (cdr (cdr v))))
                (sum (cdr vs)))))
 ```
 
+## Weird recursion {.fragile}
+
+```{emphasize=3:14-3:17,5:22-5:24}
+(define (sum vs)
+        (if (= 1 (length vs))
+            (car vs)
+            (+ (car vs)
+               (sum (cdr vs)))))
+```
+
+## Weird meta-functions
+
+```scheme
+(define (double value)
+        (* 2 value))
+
+(define (apply-twice fn value)
+        (fn (fn value)))
+
+> (apply-twice double 2)
+```
+
+## Weird meta-functions
+
+```scheme
+(define (double value)
+        (* 2 value))
+
+(define (apply-twice fn value)
+        (fn (fn value)))
+
+> (apply-twice double 2)
+8
+```
+
+## Weird meta-functions {.fragile}
+
+```{emphasize=1:22-1:23,2:10-2:11,2:14-2:15}
+(define (apply-twice fn value)
+        (fn (fn value)))
+```
+
+## Weird functions as values
+
+```scheme
+> (map double (list 3 4 5))
+```
+
+## Weird functions as values
+
+```scheme
+> (map double (list 3 4 5))
+(6 8 10)
+```
+
+## Weird code as data
+
+```scheme
+> (define s (list '+ 4 7))
+```
+
+## Weird code as data
+
+```scheme
+> (define s (list '+ 4 7))
+> s
+```
+
+## Weird code as data
+
+```scheme
+> (define s (list '+ 4 7))
+> s
+(+ 4 7)
+```
+
+## Weird code as data
+
+```scheme
+> s
+(+ 4 7)
+> (eval s)
+```
+
+## Weird code as data
+
+```scheme
+> s
+(+ 4 7)
+> (eval s)
+11
+```
+
+## Weird code as data
+
+```scheme
+> (define (switchop a) (cons '* (cdr a)))
+```
+
+## Weird code as data
+
+```scheme
+> (define (switchop a) (cons '* (cdr a)))
+> (define s2 (switchop s))
+```
+
+## Weird code as data
+
+```scheme
+> (define (switchop a) (cons '* (cdr a)))
+> (define s2 (switchop s))
+> s2
+```
+
+## Weird code as data
+
+```scheme
+> (define (switchop a) (cons '* (cdr a)))
+> (define s2 (switchop s))
+> s2
+(* 4 7)
+```
+
+## Weird code as data
+
+```scheme
+> s2
+(* 4 7)
+> (eval s2)
+```
+
+## Weird code as data
+
+```scheme
+> s2
+(* 4 7)
+> (eval s2)
+28
+```
+
 ## Cool
 
-- duck typing (generics)
-- generating code
-- Metaprogramming is just programming
-- macros
-- Build your own language
-- Metasyntactic evaluator
+* Better names
+* Duck typing (generics)
+* Metaprogramming is just programming
+* Build your own language
 * `?`, `-` and `!` in names
+
+## Cool names
+
+* These are all valid names in Scheme:
+
+```scheme
+equal?
+boom!
+a*b
+co-ordinates
+<10
++
+```
+
+This is cool.
+
+## Cool replacement
+
+* This works:
+
+```scheme
+> (define (+ x y) 5)
+> (+ 2 2)
+5
+```
+
+This is cool.
+
+## Cool Duck typing
+
+```scheme
+> (sort (list 5 4 3 2 1) <)
+(1 2 3 4 5)
+> (sort (list "abc" "a" "ab") string<?)
+("a" "ab" "abc")
+```
+
+## Cool things I haven't mentioned
+
+
+* Cheating with `set!`
 
 ## Cool reading
 
