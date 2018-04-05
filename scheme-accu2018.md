@@ -747,7 +747,6 @@ Returns (cdr (car (cdr (cdr v))))
 * Duck typing (generics)
 * Metaprogramming is just programming
 * Build your own language
-* `?`, `-` and `!` in names
 
 ## Cool names
 
@@ -776,7 +775,7 @@ This is cool.
 
 This is cool.
 
-## Cool Duck typing
+## Cool Duck Typing
 
 ```scheme
 > (sort (list 5 4 3 2 1) <)
@@ -785,10 +784,58 @@ This is cool.
 ("a" "ab" "abc")
 ```
 
+This is somewhat uncool, but useful.
+
+## Cool lambdas {.fragile}
+
+```{emphasize=2:8-2:27}
+> (map
+       (lambda (x) (+ x 1))
+       (list 1 2 3))
+(2 3 4)
+```
+
+## Cool closures
+
+```scheme
+(define (counter)
+        (define c 0)
+        (lambda ()
+                (set! c (+ c 1))
+                c))
+```
+
+## Cool closures
+
+```scheme
+> (define a (counter))
+> (a)
+1
+> (a)
+2
+> (a)
+3
+```
+
+## Cool metaprogramming
+
+TODO code that "builds" code
+
+```scheme
+> (define (times-n n) (lambda (x) (* n x)))
+> (map (times-n 3) (list 1 2 3))
+(3 6 9)
+```
+
+## Cool language building
+
+TODO use the graphics language
+
 ## Cool things I haven't mentioned
 
-
-* Cheating with `set!`
+* Macros
+* The metasyntactic evaluator
+* TODO more?
 
 ## Cool reading
 
@@ -801,3 +848,89 @@ This is cool.
 This presentation is available under [cc by-sa](http://creativecommons.org/licenses/by-sa/4.0/) at [github.com/andybalaam/videos-scheme-accu2018](https://github.com/andybalaam/videos-scheme-accu2018).
 
 \center \ccbysa
+
+## Extra - data from functions (1)
+
+```scheme
+(define (mcons a b)
+    (lambda (cmd)
+        (if (equal? cmd "car")
+            a
+            b)))
+
+(define (mcar pair) (pair "car"))
+(define (mcdr pair) (pair "cdr"))
+```
+
+## Extra - data from functions (2)
+
+```scheme
+> (define foo (mcons 1 2))
+> (mcar foo)
+1
+> (mcdr foo)
+2
+```
+
+## Extra - numbers from functions (1)
+
+```scheme
+(define n0 (lambda () null))
+
+(define (minc x) (lambda () x))
+
+(define (mdec x) (x))
+```
+
+## Extra - numbers from functions (2)
+
+```scheme
+(define n1 (minc n0))
+(define n2 (minc n1))
+(define n3 (minc n2))
+(define n4 (minc n3))
+(define n5 (minc n4))
+```
+
+## Extra - numbers from functions (3)
+
+```scheme
+(define (mzero? x) (null? (x)))
+
+(define (mequal? x y)
+    (cond
+        ((mzero? x) (mzero? y))
+        ((mzero? y) (mzero? x))
+        (else (mequal? (mdec x) (mdec y)))))
+```
+
+## Extra - numbers from functions (4)
+
+```scheme
+> (mequal? n1 n0)
+#f
+> (mequal? n1 n1)
+#t
+```
+
+## Extra - numbers from functions (5)
+
+```scheme
+(define (m+ x y)
+    (if (mzero? y)
+        x
+        (m+ (minc x) (mdec y))))
+```
+
+## Extra - numbers from functions (6)
+
+```scheme
+> (mequal? (m+ n0 n2) n2)
+#t
+> (mequal? (m+ n0 n2) n3)
+#f
+> (mequal? (m+ n0 n2) (m+ n1 n2))
+#f
+> (mequal? (m+ n2 n3) n5)
+#t
+```
