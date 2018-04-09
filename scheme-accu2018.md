@@ -743,10 +743,44 @@ Returns (cdr (car (cdr (cdr v))))
 
 ## Cool
 
+* Quoting
 * Better names
 * Duck typing (generics)
+* Lambdas
+* Closures
 * Metaprogramming is just programming
-* Build your own language
+
+## Cool quoting
+
+```scheme
+> '(* 3 6)
+```
+
+## Cool quoting
+
+```scheme
+> '(* 3 6)
+(* 3 6)
+```
+
+## Cool quoting
+
+```scheme
+> '(* 3 6)
+(* 3 6)
+
+> '(foo (bar "a" 3))
+```
+
+## Cool quoting
+
+```scheme
+> '(* 3 6)
+(* 3 6)
+
+> '(foo (bar "a" 3))
+(foo (bar "a" 3))
+```
 
 ## Cool names
 
@@ -805,6 +839,61 @@ This is somewhat uncool, but useful.
                 c))
 ```
 
+## Cool closures {.fragile}
+
+```{emphasize=4:18-4:21}
+(define (counter)
+        (define c 0)
+        (lambda ()
+                (set! c (+ c 1))
+                c))
+```
+
+## Cool closures
+
+```scheme
+> (define a (counter))
+> (a)
+```
+
+## Cool closures
+
+```scheme
+> (define a (counter))
+> (a)
+1
+```
+
+## Cool closures
+
+```scheme
+> (define a (counter))
+> (a)
+1
+> (a)
+```
+
+## Cool closures
+
+```scheme
+> (define a (counter))
+> (a)
+1
+> (a)
+2
+```
+
+## Cool closures
+
+```scheme
+> (define a (counter))
+> (a)
+1
+> (a)
+2
+> (a)
+```
+
 ## Cool closures
 
 ```scheme
@@ -817,25 +906,95 @@ This is somewhat uncool, but useful.
 3
 ```
 
+## Cool closures
+
+```scheme
+> (define b (counter))
+> (b)
+```
+
+## Cool closures
+
+```scheme
+> (define b (counter))
+> (b)
+1
+```
+
+## Cool closures
+
+```scheme
+> (define b (counter))
+> (b)
+1
+> (a)
+```
+
+## Cool closures
+
+```scheme
+> (define b (counter))
+> (b)
+1
+> (a)
+4
+```
+
 ## Cool metaprogramming
 
-TODO code that "builds" code
+* Build code from code
 
 ```scheme
 > (define (times-n n) (lambda (x) (* n x)))
-> (map (times-n 3) (list 1 2 3))
-(3 6 9)
 ```
 
-## Cool language building
+## Cool metaprogramming
 
-TODO use the graphics language
+* Build code from code
+
+```scheme
+> (define (times-n n) (lambda (x) (* n x)))
+> (define times3 (times-n 3))
+```
+
+## Cool metaprogramming
+
+* Build code from code
+
+```scheme
+> (define (times-n n) (lambda (x) (* n x)))
+> (define times3 (times-n 3))
+> (define (trpl lst) (map times3 lst))
+```
+
+## Cool metaprogramming
+
+* Build code from code
+
+```scheme
+> (define (times-n n) (lambda (x) (* n x)))
+> (define times3 (times-n 3))
+> (define (trpl lst) (map times3 lst))
+> (trpl (list 1 2 3))
+```
+
+## Cool metaprogramming
+
+* Build code from code
+
+```scheme
+> (define (times-n n) (lambda (x) (* n x)))
+> (define times3 (times-n 3))
+> (define (trpl lst) (map times3 lst))
+> (trpl (list 1 2 3))
+(3 6 9)
+```
 
 ## Cool things I haven't mentioned
 
 * Macros
-* The metasyntactic evaluator
-* TODO more?
+* Streams
+* The Metacircular Evaluator
 
 ## Cool reading
 
