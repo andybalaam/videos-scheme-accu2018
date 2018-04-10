@@ -1,6 +1,6 @@
 ---
 title: Scheme Lisp - Feel the Cool
-author: Andy Balaam, OpenMarket \newline \ccbysa
+author: Andy Balaam, OpenMarket \newline artificialworlds.net/blog \newline \ccbysa
 rights: Copyright 2018 Andy Balaam, CC BY-SA
 header-includes:
   - \usepackage[scale=1]{ccicons}
@@ -18,7 +18,9 @@ Scheme is
 * weird, and
 * cool
 
-## Simple by design
+## Simple
+
+Scheme is simple by design.
 
 * Designed for teaching^[by Sussman and Steele, 1970s]
 * Used as the basis of the Computer Science course at MIT
@@ -297,6 +299,8 @@ Both are actually the same.
 ```
 
 ## Weird
+
+Scheme is weird.
 
 * Building lists from pairs
 * Recursion for everything
@@ -680,6 +684,7 @@ Returns (cdr (car (cdr (cdr v))))
 ## Weird code as data
 
 ```scheme
+> (define s (list '+ 4 7))
 > s
 (+ 4 7)
 > (eval s)
@@ -688,6 +693,7 @@ Returns (cdr (car (cdr (cdr v))))
 ## Weird code as data
 
 ```scheme
+> (define s (list '+ 4 7))
 > s
 (+ 4 7)
 > (eval s)
@@ -727,6 +733,8 @@ Returns (cdr (car (cdr (cdr v))))
 ## Weird code as data
 
 ```scheme
+> (define (switchop a) (cons '* (cdr a)))
+> (define s2 (switchop s))
 > s2
 (* 4 7)
 > (eval s2)
@@ -735,6 +743,8 @@ Returns (cdr (car (cdr (cdr v))))
 ## Weird code as data
 
 ```scheme
+> (define (switchop a) (cons '* (cdr a)))
+> (define s2 (switchop s))
 > s2
 (* 4 7)
 > (eval s2)
@@ -746,9 +756,8 @@ Returns (cdr (car (cdr (cdr v))))
 * Quoting
 * Better names
 * Duck typing (generics)
-* Lambdas
-* Closures
-* Metaprogramming is just programming
+* Lambdas & Closures
+* Metaprogramming
 
 ## Cool quoting
 
@@ -942,7 +951,7 @@ This is somewhat uncool, but useful.
 
 ## Cool metaprogramming
 
-* Build code from code
+Metaprogramming is just programming.
 
 ```scheme
 > (define (times-n n) (lambda (x) (* n x)))
