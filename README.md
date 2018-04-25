@@ -2,6 +2,8 @@
 
 Slides for my 2018 ACCU Conference talk.
 
+View them online at [artificialworlds.net/presentations/scheme-accu2018](http://www.artificialworlds.net/presentations/scheme-accu2018/scheme-accu2018.html) or download a [PDF](http://www.artificialworlds.net/presentations/scheme-accu2018/scheme-accu2018.pdf)
+
 ## Setup
 
 ```bash
